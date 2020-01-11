@@ -22,6 +22,10 @@ class RingBuffer:
                 print("------CURRENT IS HEAD ----------")
                 self.storage.head.value = item
                 self.current = self.storage.head.next
+            if (self.current is self.storage.tail):
+                print("------CURRENT IS TAIL ----------")
+                self.storage.tail.value = item
+                self.current = self.storage.head
         
 
     def get(self):
