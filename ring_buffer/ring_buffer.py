@@ -102,18 +102,18 @@ class ArrayRingBuffer:
         # Not setting the current as value cause two values can be same so swapping out will
         # be difficult. Index is the right approach
         self.current = 0
-        self.storage = []
+        self.storage = ['' for x in range(capacity)]
 
     def append(self, item):
         print("!!!!!!!!!!!!!!!ITEM IS ---------->>", item)
-        self.storage.append(item) 
+        self.storage[self.current] = item
         if (self.current == self.capacity-1):
             self.current = 0
         else:
             self.current += 1
 
     def get(self):
-        return self.storage
+        return [x for x in self.storage if x != '']
 
 ring_buffer = ArrayRingBuffer(5)
 ring_buffer.append('a')
@@ -125,3 +125,18 @@ print(ring_buffer.get())
 ring_buffer.append('e')
 print(len(ring_buffer.storage))
 print(ring_buffer.get())
+ring_buffer.append('f')
+print(len(ring_buffer.storage))
+print(ring_buffer.get())
+ring_buffer.append('g')
+print('------ADDING H AND I-----')
+ring_buffer.append('h')
+ring_buffer.append('i')
+print(len(ring_buffer.storage))
+print(ring_buffer.get()) #['f', 'g', 'h', 'i', 'e']
+
+ring_buffer.append('j')
+print(len(ring_buffer.storage))
+print(ring_buffer.get()) 
+ring_buffer.append('k')
+print(ring_buffer.get()) #['k', 'g', 'h', 'i', 'j']
