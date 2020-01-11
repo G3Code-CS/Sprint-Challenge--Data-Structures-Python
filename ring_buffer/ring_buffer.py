@@ -36,7 +36,7 @@ class RingBuffer:
                 print("------CURRENT ITEM TO REPLACE IS ----", self.current.value)
                 new_dll = DoublyLinkedList()
                 is_value_updated = False
-                while (i<self.storage.length):
+                while (i<self.storage.length+1):
                     if (self.current.value is current_node.value and not is_value_updated):
                         current_node.value = item
                         if (current_node.next is None):
@@ -79,6 +79,18 @@ print(ring_buffer.get())
 ring_buffer.append('f')
 print(ring_buffer.storage.length)
 print(ring_buffer.get())
+ring_buffer.append('g')
+print('------ADDING H AND I-----')
+ring_buffer.append('h')
+ring_buffer.append('i')
+print(ring_buffer.storage.length)
+print(ring_buffer.get()) #['f', 'g', 'h', 'i', 'e']
+
+ring_buffer.append('j')
+print(ring_buffer.storage.length)
+print(ring_buffer.get()) 
+ring_buffer.append('k')
+print(ring_buffer.get()) #['k', 'g', 'h', 'i', 'j']
 
 # ----------------Stretch Goal-------------------
 
