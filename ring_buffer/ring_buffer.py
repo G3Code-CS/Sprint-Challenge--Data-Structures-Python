@@ -113,7 +113,7 @@ class ArrayRingBuffer:
             self.current += 1
 
     def get(self):
-        pass
+        return self.storage
 
 ring_buffer = ArrayRingBuffer(5)
 ring_buffer.append('a')
