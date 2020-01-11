@@ -22,6 +22,14 @@ duplicates = []
 # Loop names2 and traverse through binary search tree to see if it exists
 # update duplicate if exists
 
+binarySearchTree = BinarySearchTree(names_1[0])
+for name in names_1:
+    binarySearchTree.insert(name)
+
+for name in names_2:
+    if binarySearchTree.contains(name):
+        duplicates.append(name)
+
 end_time = time.time()
 print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
 print (f"runtime: {end_time - start_time} seconds")
