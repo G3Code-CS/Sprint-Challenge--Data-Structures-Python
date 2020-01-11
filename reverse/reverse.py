@@ -44,4 +44,6 @@ class LinkedList:
 
   def reverse_list(self):
     # TO BE COMPLETED
+    # The last node becomes the head
+    # The links are fully reversed. So loop through and push the .next = .next.next
     pass
