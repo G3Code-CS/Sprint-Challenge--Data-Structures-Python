@@ -1,4 +1,5 @@
 import time
+from binary_search_tree import BinarySearchTree
 
 start_time = time.time()
 
@@ -15,7 +16,11 @@ duplicates = []
 #     for name_2 in names_2:
 #         if name_1 == name_2:
 #             duplicates.append(name_1)
-duplicates = [x for x in names_1 for y in names_2 if x == y]
+# duplicates = [x for x in names_1 for y in names_2 if x == y]
+# Using Binary search tree
+# Input the contents in names1 to the tree
+# Loop names2 and traverse through binary search tree to see if it exists
+# update duplicate if exists
 
 end_time = time.time()
 print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
