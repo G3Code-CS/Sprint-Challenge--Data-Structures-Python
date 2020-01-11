@@ -46,4 +46,15 @@ class LinkedList:
     # TO BE COMPLETED
     # The last node becomes the head
     # The links are fully reversed. So loop through and push the .next = .next.next
-    pass
+    current_node = self.head
+    previous_node = None
+    next_node = current_node.next_node
+    while (next_node):
+        # Because we are reversing the order
+        current_node.next_node = previous_node
+        previous_node = current_node
+        current_node = next_node
+        next_node = current_node.next_node
+    current_node.next_node = previous_node #For the last node
+    self.head = current_node
+    return self.head.value
