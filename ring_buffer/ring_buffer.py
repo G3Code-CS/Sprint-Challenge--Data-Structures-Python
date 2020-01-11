@@ -66,31 +66,31 @@ class RingBuffer:
 
         return list_buffer_contents
 
-ring_buffer = RingBuffer(5)
-ring_buffer.append('a')
-ring_buffer.append('b')
-ring_buffer.append('c')
-ring_buffer.append('d')
-print(ring_buffer.storage.length)
-print(ring_buffer.get())
-ring_buffer.append('e')
-print(ring_buffer.storage.length)
-print(ring_buffer.get())
-ring_buffer.append('f')
-print(ring_buffer.storage.length)
-print(ring_buffer.get())
-ring_buffer.append('g')
-print('------ADDING H AND I-----')
-ring_buffer.append('h')
-ring_buffer.append('i')
-print(ring_buffer.storage.length)
-print(ring_buffer.get()) #['f', 'g', 'h', 'i', 'e']
+# ring_buffer = RingBuffer(5)
+# ring_buffer.append('a')
+# ring_buffer.append('b')
+# ring_buffer.append('c')
+# ring_buffer.append('d')
+# print(ring_buffer.storage.length)
+# print(ring_buffer.get())
+# ring_buffer.append('e')
+# print(ring_buffer.storage.length)
+# print(ring_buffer.get())
+# ring_buffer.append('f')
+# print(ring_buffer.storage.length)
+# print(ring_buffer.get())
+# ring_buffer.append('g')
+# print('------ADDING H AND I-----')
+# ring_buffer.append('h')
+# ring_buffer.append('i')
+# print(ring_buffer.storage.length)
+# print(ring_buffer.get()) #['f', 'g', 'h', 'i', 'e']
 
-ring_buffer.append('j')
-print(ring_buffer.storage.length)
-print(ring_buffer.get()) 
-ring_buffer.append('k')
-print(ring_buffer.get()) #['k', 'g', 'h', 'i', 'j']
+# ring_buffer.append('j')
+# print(ring_buffer.storage.length)
+# print(ring_buffer.get()) 
+# ring_buffer.append('k')
+# print(ring_buffer.get()) #['k', 'g', 'h', 'i', 'j']
 
 # ----------------Stretch Goal-------------------
 
@@ -98,11 +98,30 @@ print(ring_buffer.get()) #['k', 'g', 'h', 'i', 'j']
 class ArrayRingBuffer:
     def __init__(self, capacity):
         self.capacity = capacity
+        # Because we are using Python List it is better to set the current as index.
+        # Not setting the current as value cause two values can be same so swapping out will
+        # be difficult. Index is the right approach
         self.current = 0
         self.storage = []
 
     def append(self, item):
-        pass
+        print("!!!!!!!!!!!!!!!ITEM IS ---------->>", item)
+        self.storage.append(item) 
+        if (self.current == self.capacity-1):
+            self.current = 0
+        else:
+            self.current += 1
 
     def get(self):
         pass
+
+ring_buffer = ArrayRingBuffer(5)
+ring_buffer.append('a')
+ring_buffer.append('b')
+ring_buffer.append('c')
+ring_buffer.append('d')
+print(len(ring_buffer.storage))
+print(ring_buffer.get())
+ring_buffer.append('e')
+print(len(ring_buffer.storage))
+print(ring_buffer.get())
