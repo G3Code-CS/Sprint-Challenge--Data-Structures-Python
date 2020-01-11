@@ -17,6 +17,11 @@ class RingBuffer:
             self.storage.add_to_tail(item)
             if (self.storage.length == self.capacity):
                 self.current = self.storage.head
+        else:
+            if (self.current is self.storage.head):
+                print("------CURRENT IS HEAD ----------")
+                self.storage.head.value = item
+                self.current = self.storage.head.next
         
 
     def get(self):
@@ -42,6 +47,9 @@ ring_buffer.append('d')
 print(ring_buffer.storage.length)
 print(ring_buffer.get())
 ring_buffer.append('e')
+print(ring_buffer.storage.length)
+print(ring_buffer.get())
+ring_buffer.append('f')
 print(ring_buffer.storage.length)
 print(ring_buffer.get())
 
