@@ -46,6 +46,9 @@ class LinkedList:
     # TO BE COMPLETED
     # The last node becomes the head
     # The links are fully reversed. So loop through and push the .next = .next.next
+    # check if there is a head
+    if not self.head:
+          return self.head
     current_node = self.head
     previous_node = None
     next_node = current_node.next_node
@@ -58,3 +61,20 @@ class LinkedList:
     current_node.next_node = previous_node #For the last node
     self.head = current_node
     return self.head.value
+
+  def __str__(self):
+      arr = []
+      if (self.head is not None):
+        current_node = self.head
+        while (current_node.next_node):
+            arr.append(current_node.value)
+            current_node = current_node.next_node
+        arr.append(current_node.value)
+      return str(arr)
+
+silly = LinkedList()
+silly.add_to_head('a')
+silly.add_to_head('b')
+silly.add_to_head('c')
+silly.reverse_list()
+print(silly)
