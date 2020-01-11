@@ -38,3 +38,23 @@ print (f"runtime: {end_time - start_time} seconds")
 # Python has built-in tools that allow for a very efficient approach to this problem
 # What's the best time you can accomplish with no restrictions on techniques or data
 # structures?
+
+# For the stretch goal I am going to use Binary search. 
+# Sort the first array and then loop the second array to find item in the first sorted array
+
+def binary_search(arr, target):
+    # arr.sort()
+    if len(arr) == 0:
+        return -1  # array empty
+
+    low = 0
+    high = len(arr)-1
+    while low <= high:
+        middle = (low + high) // 2
+        if arr[middle] == target:
+            return 1
+        elif arr[middle] > target:
+            high = middle - 1
+        else:
+            low = middle + 1
+    return -1
