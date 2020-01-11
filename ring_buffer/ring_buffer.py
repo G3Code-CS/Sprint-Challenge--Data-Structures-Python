@@ -17,14 +17,33 @@ class RingBuffer:
             self.storage.add_to_tail(item)
             if (self.storage.length == self.capacity):
                 self.current = self.storage.head
+        
 
     def get(self):
         # Note:  This is the only [] allowed
         list_buffer_contents = []
 
         # TODO: Your code here
+        i = 1
+        current_node = self.storage.head
+        while (i < self.storage.length + 1):
+            if (current_node.value is not None):
+                list_buffer_contents.append(current_node.value)
+            current_node = current_node.next
+            i += 1
 
         return list_buffer_contents
+
+ring_buffer = RingBuffer(5)
+ring_buffer.append('a')
+ring_buffer.append('b')
+ring_buffer.append('c')
+ring_buffer.append('d')
+print(ring_buffer.storage.length)
+print(ring_buffer.get())
+ring_buffer.append('e')
+print(ring_buffer.storage.length)
+print(ring_buffer.get())
 
 # ----------------Stretch Goal-------------------
 
