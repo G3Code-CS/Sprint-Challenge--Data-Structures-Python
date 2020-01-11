@@ -58,3 +58,14 @@ def binary_search(arr, target):
         else:
             low = middle + 1
     return -1
+
+duplicates = []
+start_time = time.time()
+names_1.sort()
+for name in names_2:
+    if binary_search(names_1, name ) == 1:
+        duplicates.append(name)
+end_time = time.time()
+
+print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
+print (f"runtime: {end_time - start_time} seconds")
