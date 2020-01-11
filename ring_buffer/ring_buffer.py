@@ -22,10 +22,33 @@ class RingBuffer:
                 print("------CURRENT IS HEAD ----------")
                 self.storage.head.value = item
                 self.current = self.storage.head.next
-            if (self.current is self.storage.tail):
+            elif (self.current is self.storage.tail):
                 print("------CURRENT IS TAIL ----------")
                 self.storage.tail.value = item
                 self.current = self.storage.head
+            else:
+                i = 1
+                current_node = self.storage.head
+                # We will be traversing the DLL and replace the value
+                # To do this we will need to create a new DLL and keep adding the values 
+                # from old list and change the value which equals current
+                print("------CREATING NEW DLL TO REPLACE----------")
+                print("------CURRENT ITEM TO REPLACE IS ----", self.current.value)
+                new_dll = DoublyLinkedList()
+                is_value_updated = False
+                while (i<self.storage.length):
+                    if (self.current.value is current_node.value and not is_value_updated):
+                        current_node.value = item
+                        if (current_node.next is None):
+                            self.current = self.storage.head
+                        else:
+                            self.current = current_node.next
+                        is_value_updated = True
+                    new_dll.add_to_tail(current_node.value)
+                    i += 1
+                    current_node = current_node.next
+                self.storage = new_dll
+
         
 
     def get(self):
